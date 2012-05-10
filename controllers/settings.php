@@ -93,6 +93,7 @@ class Settings extends ClearOS_Controller
         // Load libraries
         //---------------
 
+        $this->lang->load('base');
         $this->load->library('mail_filter/Amavis');
 
         // Set validation rules
@@ -148,6 +149,6 @@ class Settings extends ClearOS_Controller
         // Load views
         //-----------
 
-        $this->page->view_form('mail_antispam', $data, lang('mail_antispam_app_name'));
+        $this->page->view_form('mail_antispam', $data, lang('base_settings'));
     }
 }

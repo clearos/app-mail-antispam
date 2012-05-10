@@ -59,15 +59,18 @@ class Blacklist extends ClearOS_Controller
         //---------------
 
         $this->lang->load('mail_antispam');
-        $this->load->library('mail_filter/Spam_Assassin');
+        $this->load->library('mail_antispam/SpamAssassin');
+        $this->load->library('mail_filter/Amavis');
 
         // Handle form submit
         //-------------------
 
         if ($this->input->post('submit')) {
             try {
-                $this->spam_assassin->set_black_list($this->input->post('blacklist'));
-                $this->page->set_message(lang('mail_antispam_list_updated'), 'info');
+                $this->spamassassin->set_black_list($this->input->post('blacklist'));
+                $this->amavis->reset(TRUE);
+
+                $this->page->set_status_updated();
                 redirect('/mail_antispam');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
@@ -79,7 +82,7 @@ class Blacklist extends ClearOS_Controller
         //---------------
 
         try {
-            $data['blacklist'] = $this->spam_assassin->get_black_list();
+            $data['blacklist'] = $this->spamassassin->get_black_list();
         } catch (Exception $e) {
             $this->page->view_exception($e);
             return;

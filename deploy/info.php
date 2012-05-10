@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_antispam';
-$app['version'] = '1.0.5';
+$app['version'] = '1.1.2';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -29,7 +29,13 @@ $app['subcategory'] = lang('base_subcategory_mail');
 // Packaging
 /////////////////////////////////////////////////////////////////////////////
 
+$app['requires'] = array(
+    'app-network',
+);
+
 $app['core_requires'] = array(
-    'spamassasin',
-    'app-mail-filter-core >= 1.0.6'
+    'spamassassin',
+    'app-mail-filter-core',
+    'app-smtp-core',
+    'app-tasks-core',
 );

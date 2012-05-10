@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Mail_Antispam view.
+ * Mail antispam settings view.
  *
  * @category   ClearOS
  * @package    Mail_Antispam
  * @subpackage Views
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
  */
@@ -107,8 +107,9 @@ for ($score = 5; $score <= 25; $score++) {
 ///////////////////////////////////////////////////////////////////////////////
 // Form
 ///////////////////////////////////////////////////////////////////////////////
-echo form_open('mail_antispam');
-echo form_header(lang('mail_antispam_configuration'));
+
+echo form_open('mail_antispam/settings/edit');
+echo form_header(lang('base_settings'));
 
 echo fieldset_header(lang('mail_antispam_discard_policy'));
 echo field_toggle_enable_disable('discard_policy', $spaminfo['discard'], lang('base_status'), $read_only);
@@ -122,9 +123,6 @@ echo fieldset_header(lang('mail_antispam_subject_tag'));
 echo field_toggle_enable_disable('subject_tag_state', $subject_tag_state, lang('base_status'), $read_only);
 echo field_dropdown('subject_tag_level', $subject_tag_policy_options, $subject_tag_level, lang('mail_antispam_level'), $read_only);
 echo field_input('subject_tag', $subject_tag, lang('mail_antispam_subject_tag'), $read_only);
-
-echo fieldset_header(lang('mail_antispam_image_processing'));
-echo field_toggle_enable_disable('image_processing_state', $image_processing_state, lang('base_status'), $read_only);
 
 echo field_button_set($buttons);
 

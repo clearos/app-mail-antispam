@@ -1,7 +1,7 @@
 
 Name: app-mail-antispam
 Epoch: 1
-Version: 1.0.5
+Version: 1.1.2
 Release: 1%{dist}
 Summary: Mail Antispam
 License: GPLv3
@@ -10,19 +10,23 @@ Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
 Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
+Requires: app-network
 
 %description
-Mail Antispam description...
+The Antispam app provides a mail filter that uses a wide range of heuristic tests to identify spam.
 
 %package core
-Summary: Mail Antispam - APIs and install
+Summary: Mail Antispam - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
+Requires: spamassassin
 Requires: app-mail-filter-core
+Requires: app-smtp-core
+Requires: app-tasks-core
 
 %description core
-Mail Antispam description...
+The Antispam app provides a mail filter that uses a wide range of heuristic tests to identify spam.
 
 This package provides the core API and libraries.
 

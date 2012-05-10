@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Spam_Assassin class.
+ * SpamAssassin class.
  *
  * @category   Apps
  * @package    Mail_Antispam
@@ -80,7 +80,7 @@ clearos_load_library('base/File_No_Match_Exception');
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * Spam_Assassin class.
+ * SpamAssassin class.
  *
  * @category   Apps
  * @package    Mail_Antispam
@@ -91,7 +91,7 @@ clearos_load_library('base/File_No_Match_Exception');
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
  */
 
-class Spam_Assassin extends Daemon
+class SpamAssassin extends Daemon
 {
     ///////////////////////////////////////////////////////////////////////////////
     // C O N S T A N T S
@@ -113,7 +113,7 @@ class Spam_Assassin extends Daemon
 	///////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Spam_Assassin constructor.
+     * SpamAssassin constructor.
      */
 
     public function __construct()
