@@ -96,14 +96,21 @@ class Settings extends ClearOS_Controller
         $this->lang->load('base');
         $this->load->library('mail_filter/Amavis');
 
+        $quarantine_installed = clearos_app_installed('mail_quarantined');
+
         // Set validation rules
         //---------------------
+
         $this->form_validation->set_policy('subject_tag_state', 'mail_filter/Amavis', 'validate_subject_tag_state', TRUE);
         if ((bool)$this->input->post('subject_tag_state')) {
             $this->form_validation->set_policy('subject_tag_level', 'mail_filter/Amavis', 'validate_subject_tag_level', TRUE);
             $this->form_validation->set_policy('subject_tag', 'mail_filter/Amavis', 'validate_subject_tag', TRUE);
         }
-        $this->form_validation->set_policy('image_processing_state', 'mail_filter/Amavis', 'validate_image_processing_state', TRUE);
+
+        $this->form_validation->set_policy('discard_policy', 'mail_filter/Amavis', 'validate_discard_policy_state', TRUE);
+        if ((bool)$this->input->post('discard_policy'))
+            $this->form_validation->set_policy('discard_policy_level', 'mail_filter/Amavis', 'validate_discard_policy_level', TRUE);
+
         $form_ok = $this->form_validation->run();
 
         // Handle form submit
@@ -111,21 +118,33 @@ class Settings extends ClearOS_Controller
 
         if (($this->input->post('submit') && $form_ok)) {
             try {
+                if ($quarantine_installed) {
+                    $quarantine_policy = $this->input->post('quarantine_policy');
+                    $quarantine_policy_level = $this->input->post('quarantine_policy_level');
+                } else {
+                    $quarantine_policy = FALSE;
+                    $quarantine_policy_level = 15;
+                }
+
                 $this->amavis->set_subject_tag_state((bool)$this->input->post('subject_tag_state'));
+
                 if ((bool)$this->input->post('subject_tag_state')) {
                     $this->amavis->set_subject_tag_level($this->input->post('subject_tag_level'));
                     $this->amavis->set_subject_tag($this->input->post('subject_tag'));
                 }
+
                 $this->amavis->set_antispam_discard_and_quarantine(
                     $this->input->post('discard_policy'),
                     $this->input->post('discard_policy_level'),
                     $this->input->post('quarantine_policy'),
                     $this->input->post('quarantine_policy_level')
                 );
-                $this->amavis->set_image_processing_state($this->input->post('image_processing_state'));
+
+                $this->amavis->reset(TRUE);
 
                 $this->page->set_status_updated();
-            } catch (Engine_Exception $e) {
+                redirect('/mail_antispam/settings');
+            } catch (Exception $e) {
                 $this->page->view_exception($e);
                 return;
             }
@@ -139,7 +158,7 @@ class Settings extends ClearOS_Controller
             $data['subject_tag'] = $this->amavis->get_subject_tag();
             $data['subject_tag_level'] = $this->amavis->get_subject_tag_level();
             $data['subject_tag_state'] = $this->amavis->get_subject_tag_state();
-            $data['image_processing_state'] = $this->amavis->get_image_processing_state();
+            $data['show_quarantine'] = $quarantine_installed;
             $data['spaminfo'] = $this->amavis->get_antispam_discard_and_quarantine();
         } catch (Exception $e) {
             $this->page->view_exception($e);

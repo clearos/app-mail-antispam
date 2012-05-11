@@ -1,15 +1,16 @@
+#!/usr/clearos/sandbox/usr/bin/php
 <?php
 
 /**
- * Mail Antispam controller.
+ * Mail antivirus install script.
  *
  * @category   Apps
- * @package    Mail_Antispam
- * @subpackage Controllers
+ * @package    Mail_Antivirus
+ * @subpackage Scripts
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antivirus/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -30,41 +31,38 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-// C L A S S
+// B O O T S T R A P
 ///////////////////////////////////////////////////////////////////////////////
 
-/**
- * Mail_Antispam controller.
- *
- * @category   Apps
- * @package    Mail_Antispam
- * @subpackage Controllers
- * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
- * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
- */
+$bootstrap = getenv('CLEAROS_BOOTSTRAP') ? getenv('CLEAROS_BOOTSTRAP') : '/usr/clearos/framework/shared';
+require_once $bootstrap . '/bootstrap.php';
 
-class Mail_Antispam extends ClearOS_Controller
-{
-    /**
-     * Antispam default controller.
-     *
-     * @return view
-     */
+///////////////////////////////////////////////////////////////////////////////
+// D E P E N D E N C I E S
+///////////////////////////////////////////////////////////////////////////////
 
-    function index()
-    {
-        // Load libraries
-        //---------------
+// Classes
+//--------
 
-        $this->lang->load('mail_antispam');
+use \clearos\apps\mail_filter\Amavis as Amavis;
 
-        // Load views
-        //-----------
+clearos_load_library('mail_filter/Amavis');
 
-        $views = array('mail_antispam/server', 'mail_antispam/settings', 'mail_antispam/lists');
+// Exceptions
+//-----------
 
-        $this->page->view_forms($views, lang('mail_antispam_app_name'));
-    }
+use \Exception as Exception;
+
+///////////////////////////////////////////////////////////////////////////////
+// M A I N
+///////////////////////////////////////////////////////////////////////////////
+
+try {
+    $amavis = new Amavis();
+
+    $amavis->set_antispam_state(TRUE);
+    $amavis->set_running_state(TRUE);
+    $amavis->set_boot_state(TRUE);
+} catch (Exception $e) {
+    clearos_log(clearos_exception_message($e));
 }

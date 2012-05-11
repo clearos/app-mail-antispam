@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_antispam';
-$app['version'] = '1.1.2';
+$app['version'] = '1.1.4';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -24,6 +24,11 @@ $app['subcategory'] = lang('base_subcategory_mail');
 /////////////////////////////////////////////////////////////////////////////
 // Controllers
 /////////////////////////////////////////////////////////////////////////////
+
+$app['controllers']['mail_antispam']['title'] = $app['name'];
+$app['controllers']['settings']['title'] = lang('base_settings');
+// $app['controllers']['whitelist']['title'] = lang('mail_antispam_whitelist');
+// $app['controllers']['blacklist']['title'] = lang('mail_antispam_blacklist');
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging

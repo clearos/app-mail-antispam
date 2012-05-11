@@ -1,7 +1,7 @@
 
 Name: app-mail-antispam
 Epoch: 1
-Version: 1.1.2
+Version: 1.1.4
 Release: 1%{dist}
 Summary: Mail Antispam
 License: GPLv3
