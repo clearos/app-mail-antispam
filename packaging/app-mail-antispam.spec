@@ -1,7 +1,7 @@
 
 Name: app-mail-antispam
 Epoch: 1
-Version: 1.1.6
+Version: 1.1.7
 Release: 1%{dist}
 Summary: Mail Antispam
 License: GPLv3
@@ -38,6 +38,7 @@ This package provides the core API and libraries.
 mkdir -p -m 755 %{buildroot}/usr/clearos/apps/mail_antispam
 cp -r * %{buildroot}/usr/clearos/apps/mail_antispam/
 
+install -D -m 0644 packaging/app-mail-antispam.cf %{buildroot}/etc/mail/spamassassin/app-mail-antispam.cf
 
 %post
 logger -p local6.notice -t installer 'app-mail-antispam - installing'
@@ -80,3 +81,4 @@ exit 0
 /usr/clearos/apps/mail_antispam/deploy
 /usr/clearos/apps/mail_antispam/language
 /usr/clearos/apps/mail_antispam/libraries
+/etc/mail/spamassassin/app-mail-antispam.cf

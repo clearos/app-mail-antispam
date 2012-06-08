@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_antispam';
-$app['version'] = '1.1.6';
+$app['version'] = '1.1.7';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -44,3 +44,8 @@ $app['core_requires'] = array(
     'app-smtp-core',
     'app-tasks-core',
 );
+
+$app['core_file_manifest'] = array(
+    'app-mail-antispam.cf' => array('target' => '/etc/mail/spamassassin/app-mail-antispam.cf'),
+);
+
