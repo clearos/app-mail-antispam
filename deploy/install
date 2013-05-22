@@ -4,9 +4,9 @@
 /**
  * Mail antivirus install script.
  *
- * @category   Apps
- * @package    Mail_Antivirus
- * @subpackage Scripts
+ * @category   apps
+ * @package    mail-antispam
+ * @subpackage scripts
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

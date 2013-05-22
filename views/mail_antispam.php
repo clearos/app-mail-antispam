@@ -3,9 +3,9 @@
 /**
  * Mail antispam settings view.
  *
- * @category   ClearOS
- * @package    Mail_Antispam
- * @subpackage Views
+ * @category   apps
+ * @package    mail-antispam
+ * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
