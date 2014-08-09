@@ -1,7 +1,7 @@
 
 Name: app-mail-antispam
 Epoch: 1
-Version: 1.2.2
+Version: 1.6.5
 Release: 1%{dist}
 Summary: Mail Antispam
 License: GPLv3
@@ -21,6 +21,7 @@ License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: spamassassin
+Requires: app-base-core >= 1:1.6.5
 Requires: app-mail-filter-core
 Requires: app-smtp-core
 Requires: app-tasks-core
@@ -76,7 +77,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/mail_antispam/packaging
-%exclude /usr/clearos/apps/mail_antispam/tests
 %dir /usr/clearos/apps/mail_antispam
 /usr/clearos/apps/mail_antispam/deploy
 /usr/clearos/apps/mail_antispam/language

@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_antispam';
-$app['version'] = '1.2.2';
+$app['version'] = '1.6.5';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -40,6 +40,7 @@ $app['requires'] = array(
 
 $app['core_requires'] = array(
     'spamassassin',
+    'app-base-core >= 1:1.6.5',
     'app-mail-filter-core',
     'app-smtp-core',
     'app-tasks-core',
