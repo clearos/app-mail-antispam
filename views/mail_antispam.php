@@ -34,6 +34,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 $this->lang->load('mail_antispam');
+$this->lang->load('mail_filter');
 $this->lang->load('base');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -111,20 +112,20 @@ for ($score = 5; $score <= 25; $score++) {
 echo form_open('mail_antispam/settings/edit');
 echo form_header(lang('base_settings'));
 
-echo fieldset_header(lang('mail_antispam_discard_policy'));
+echo fieldset_header(lang('mail_filter_discard_policy'));
 echo field_toggle_enable_disable('discard_policy', $spaminfo['discard'], lang('base_status'), $read_only);
 echo field_dropdown('discard_policy_level', $discard_policy_options, $spaminfo['discard_level'], lang('base_threshold'), $read_only);
 
 if ($show_quarantine) {
-    echo fieldset_header(lang('mail_antispam_quarantine_policy'));
+    echo fieldset_header(lang('mail_filter_quarantine_policy'));
     echo field_toggle_enable_disable('quarantine_policy', $spaminfo['quarantine'], lang('base_status'), $read_only);
     echo field_dropdown('quarantine_policy_level', $quarantine_policy_options, $spaminfo['quarantine_level'], lang('base_threshold'), $read_only);
 }
 
-echo fieldset_header(lang('mail_antispam_subject_tag'));
+echo fieldset_header(lang('mail_filter_subject_tag'));
 echo field_toggle_enable_disable('subject_tag_state', $subject_tag_state, lang('base_status'), $read_only);
 echo field_dropdown('subject_tag_level', $subject_tag_policy_options, $subject_tag_level, lang('base_threshold'), $read_only);
-echo field_input('subject_tag', $subject_tag, lang('mail_antispam_subject_tag'), $read_only);
+echo field_input('subject_tag', $subject_tag, lang('mail_filter_subject_tag'), $read_only);
 
 echo field_button_set($buttons);
 

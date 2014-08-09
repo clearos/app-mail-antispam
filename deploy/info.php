@@ -41,7 +41,7 @@ $app['requires'] = array(
 $app['core_requires'] = array(
     'spamassassin',
     'app-base-core >= 1:1.6.5',
-    'app-mail-filter-core',
+    'app-mail-filter-core >= 1:1.6.5',
     'app-smtp-core',
     'app-tasks-core',
 );

@@ -22,7 +22,7 @@ Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: spamassassin
 Requires: app-base-core >= 1:1.6.5
-Requires: app-mail-filter-core
+Requires: app-mail-filter-core >= 1:1.6.5
 Requires: app-smtp-core
 Requires: app-tasks-core
 
