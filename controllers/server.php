@@ -100,8 +100,12 @@ class Server extends Daemon
 
         try {
             $this->amavis->set_antispam_state(TRUE);
-            $this->amavis->set_running_state(TRUE);
             $this->amavis->set_boot_state(TRUE);
+
+            if ($this->amavis->get_running_state())
+                $this->amavis->reset(TRUE);
+            else
+                $this->amavis->set_running_state(TRUE);
         } catch (Exception $e) {
             //
         }
