@@ -7,7 +7,7 @@
  * @package    mail-antispam
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2006-2012 ClearFoundation
+ * @copyright  2006-2014 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
  */
@@ -85,7 +85,7 @@ clearos_load_library('base/File_No_Match_Exception');
  * @package    mail-antispam
  * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2006-2012 ClearFoundation
+ * @copyright  2006-2014 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
  */
@@ -249,7 +249,7 @@ class SpamAssassin extends Daemon
     }
 
     /**
-     * Sets black listed addresses
+     * Sets black listed addresses.
      *
      * @param string $addresses addresses
      *
@@ -271,7 +271,7 @@ class SpamAssassin extends Daemon
     }
 
     /**
-     * Sets white listed addresses
+     * Sets white listed addresses.
      *
      * @param string $addresses addresses
      *
