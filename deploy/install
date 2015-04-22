@@ -2,15 +2,15 @@
 <?php
 
 /**
- * Mail antivirus install script.
+ * Mail antispam install script.
  *
  * @category   apps
  * @package    mail-antispam
  * @subpackage scripts
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2012 ClearFoundation
+ * @copyright  2012-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
- * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antivirus/
+ * @link       http://www.clearfoundation.com/docs/developer/apps/mail_antispam/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
