@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_antispam';
-$app['version'] = '2.0.18';
+$app['version'] = '2.0.24';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -48,5 +48,9 @@ $app['core_requires'] = array(
 
 $app['core_file_manifest'] = array(
     'app-mail-antispam.cf' => array('target' => '/etc/mail/spamassassin/app-mail-antispam.cf'),
+);
+
+$app['delete_dependency'] = array(
+    'app-mail-antispam-core',
 );
 
